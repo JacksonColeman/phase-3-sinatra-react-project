@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+/* my additions */
+body {
+  background-color: lightcoral;
+}
+
+.PlayerItem {
+  border-style: solid;
+  width: 200px;
+  background-color: beige;
+}
+
+.PlayerItem:hover  {
+  background-color: bisque;
+  font-weight: bold;
+}
+
+.SelectedPlayer {
+  border-style: solid;
+  width: 200px;
+  background-color: bisque;
+  font-weight: bold;
+  border-color: green;
+  border-width: 5px;
+}
+
+.playerInfo h4{
+  margin:0;
+  padding:0;
+}

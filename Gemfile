@@ -53,3 +53,6 @@ end
 
 # for generated fake names 
 gem 'faker'
+
+#for random stats
+gem 'rubystats'

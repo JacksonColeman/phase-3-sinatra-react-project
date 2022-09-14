@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_09_14_001032) do
   create_table "players", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.string "image"
     t.integer "age"
     t.decimal "batting_average"
     t.integer "position_id"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 2022_09_14_001032) do
   create_table "stadia", force: :cascade do |t|
     t.string "name"
     t.string "location"
+    t.string "image"
     t.integer "built"
     t.integer "capacity"
     t.string "team_id"
