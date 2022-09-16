@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function PlayerItem({player, updateCurrentPlayer}){
+function PlayerItem({player, team, updateCurrentPlayer, deletePlayer}){
     // get players
     const [selected, setSelected] = useState(false);
 
@@ -13,12 +13,22 @@ function PlayerItem({player, updateCurrentPlayer}){
             updateCurrentPlayer(player)
         }
     }
+
+    const handleDeleteClick = () => {
+        fetch(`http://localhost:9292/teams/${team}/players/${player.id}`, {
+            method: 'DELETE'})
+        .then(deletePlayer(player))
+    }
     
     return(
-        <button class={selected ? "SelectedPlayer" : "PlayerItem"} onClick={toggleSelected}>
-            <p>{player.first_name} {player.last_name}</p>
-            <p>Batting Average: {player.batting_average}</p>
-        </button>
+        <div>
+            <button className={selected ? "SelectedPlayer" : "PlayerItem"} onClick={toggleSelected}>
+                <p>{player.first_name} {player.last_name}</p>
+                <p>Batting Average: {player.batting_average}</p>
+            </button>
+
+            <button onClick={handleDeleteClick}><strong>X</strong></button>
+        </div>
     )
 }
 

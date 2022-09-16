@@ -19,10 +19,12 @@ cardinals = Team.create(name: "Cardinals", location: "St. Louis", founded: 1882,
 brewers = Team.create(name: "Brewers", location: "Milwaulkee", founded: 1969, division_id: nlc.id)
 reds = Team.create(name: "Reds", location: "Cincinnatti", founded: 1881, division_id: nlc.id)
 pirates = Team.create(name: "Pirates", location: "Pittsburgh", founded: 1882, division_id: nlc.id)
+braves = Team.create(name: "Braves", location: "Atlanta", founded: 1871, division_id: nle.id)
 
 #Stadiums
-Stadium.create(name: "Wrigley Field", location: "Chicago", image: "https://www.si.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1240/MTY4MTcyNTcyMjg2MTk5MTY4/image-placeholder-title.webp", built: 1914, capacity:41649, team_id: cubs.id)
-Stadium.create(name: "Busch Stadium", location: "St. Louis", image: "https://www.si.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1240/MTY4MTcyNTcyNTU0NTAzNTUy/image-placeholder-title.webp", built: 2006, capacity:45494, team_id: cardinals.id)
+Stadium.create(name: "Wrigley Field", location: "Chicago, IL", image: "https://www.si.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1240/MTY4MTcyNTcyMjg2MTk5MTY4/image-placeholder-title.webp", built: 1914, capacity:41649, team_id: cubs.id)
+Stadium.create(name: "Busch Stadium", location: "St. Louis, MO", image: "https://www.si.com/.image/c_limit%2Ccs_srgb%2Cq_auto:good%2Cw_1240/MTY4MTcyNTcyNTU0NTAzNTUy/image-placeholder-title.webp", built: 2006, capacity:45494, team_id: cardinals.id)
+Stadium.create(name: "Truist Park", location: "Cumberland, GA", image: "https://covingtonnews.cdn-anvilcms.net/media/images/2019/04/04/images/Atlanta_Braves.max-1200x675.jpg", built: 2017, capacity:41084, team_id: braves.id)
 
 #Positions
 Position.create(id: 1, abbrev: "P", full_name: "Pitcher")
@@ -44,7 +46,7 @@ player_ba = Rubystats::NormalDistribution.new(0.244, 0.027)
 
 for team in Team.all
     for pos in 1..9
-        Player.create(first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, age: player_age.rng.round, batting_average: player_ba.rng.round(3), position_id: pos, team_id: team.id)
+        Player.create(first_name: Faker::Name.male_first_name, last_name: Faker::Name.last_name, age: player_age.rng.round, batting_average: player_ba.rng.round(3), position_id: pos, team_id: team.id, image: Faker::LoremFlickr.image(search_terms: ['baseball']))
     end
 end
 

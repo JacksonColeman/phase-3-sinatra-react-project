@@ -1,4 +1,5 @@
 class TeamController < ApplicationController
+    #Read Teams
     get "/teams/" do
         teams = Team.all
         teams.to_json
@@ -15,7 +16,7 @@ class TeamController < ApplicationController
     end
 
     #Read Players
-    get "/teams/:teamid/players" do
+    get "/teams/:teamid/players/" do
         players = Team.find(params[:teamid]).players
         players.to_json
     end
@@ -27,7 +28,7 @@ class TeamController < ApplicationController
     end
 
     #Create Players
-    post "/teams/:teamid/players" do
+    post "/teams/:teamid/players/" do
         player = Player.create(playerParams)
         status 201
         player.to_json
